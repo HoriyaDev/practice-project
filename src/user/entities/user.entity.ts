@@ -12,11 +12,14 @@ firstName:string;
 @Column()
 lastName:string;
 
-@Column()
+@Column({ unique: true })
 email:string;
 
 @Column({ nullable: true })
 password:string;
+
+@Column('text', { array: true, default: ['user'] })
+roles: string[];
 
 @BeforeInsert() 
 async hashPassword(){
